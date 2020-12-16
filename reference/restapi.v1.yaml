@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  title: restapi
+  version: '1.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /items:
+    get:
+      summary: Get items
+      tags: []
+      responses: {}
+      operationId: get-items
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+    post:
+      summary: Post items
+      operationId: post-items
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+  /user:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '404':
+          description: Not Found
+      operationId: get-user
+  '/user/api/:id':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            header-0:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '404':
+          description: Not Found
+      operationId: 'get-user-api-:id'
+    delete:
+      summary: ''
+      operationId: 'delete-user-api-:id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '404':
+          description: Not Found
+    put:
+      summary: ''
+      operationId: 'put-user-api-:id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+components:
+  schemas:
+    item:
+      title: item
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        category:
+          type: string
+        price:
+          type: number
+        post date:
+          type: string
+        delivery type:
+          type: string
+        phonenumber:
+          type: number
+    user:
+      title: user
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
